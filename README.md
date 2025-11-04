@@ -1,16 +1,26 @@
-## Hi there 👋
+# Pouch Go Module Archives
 
-<!--
-**pva/pva** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+Pre-generated archives for packages used in the
+[pouch](https://github.com/pva/pouch) Gentoo overlay. It currently hosts
+dependency bundles (go-mod directories) for ebuilds using `go-module.eclass`.
 
-Here are some ideas to get you started:
+All dependency archives are attached as release assets to the single release tagged v1.0.
+New or updated archives will be added to this same release over time.
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+## Usage
+
+Upload dependencies bundle:
+```bash
+gh release upload v1.0 package-vX.Y.Z-deps.tar.xz
+```
+
+Reference a release asset directly in your ebuild, for example:
+```bash
+SRC_URI="https://github.com/pva/pva.github.io/releases/download/v1.0/${P}-deps.tar.xz"
+```
+
+## Notes
+
+* Assets are generated from official upstream Go modules in accordance with
+  `go-module.eclass` instructions.
+* Verify licenses of all statically linked dependencies (dev-go/lichen helps check).
